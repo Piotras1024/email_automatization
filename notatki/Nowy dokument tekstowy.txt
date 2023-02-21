@@ -1,0 +1,13 @@
+python.org
+instalacja
+
+python -v
+pip install --upgrade pip
+pip install venv
+python -m venv venv
+\venv\Scripts\activate
+pip install -r nazwapliku
+
+
+pip install 
+requirments

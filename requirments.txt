@@ -1,0 +1,4 @@
+beautifulsoup4 == 4.11.2
+pandas == 2.0.0rc0
+openpyxl == 3.2.0b1
+lxml == 4.9.2

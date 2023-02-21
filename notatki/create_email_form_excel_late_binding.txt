@@ -1,0 +1,29 @@
+Option Explicit
+
+Sub Create_email_from_excel()
+    Dim olApp As Object
+    Dim olEmail As Object
+    
+    Set olApp = CreateObject("Outlook.Application")
+    Set olEmail = olApp.CreateItem(0)
+    
+    With olEmail
+        .BodyFormat = 2
+        .Display
+        
+        .HTMLBody = "<H1>dear Agatka</H1>" & "<br>" & .HTMLBody
+        .Attachments.Add Environ("UserProfile") & "\Desktop\raw\Diplomas\Agata Bajsztok.docx"
+        
+        .To = "To"
+        .CC = "CC"
+        .Subject = "temat"
+        
+        '.Send
+
+    End With
+        
+    
+    
+    
+    
+End Sub

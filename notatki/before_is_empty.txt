@@ -1,0 +1,54 @@
+Option Explicit
+
+Sub Create_email_from_excel()
+    Call RunPythonScript
+    Application.Wait (Now + TimeValue("0:00:05"))
+    Dim I As Integer
+    For I = 2 To 5
+        Dim name_surname, text_body, to_message, cc_message, subject_message As String
+        name_surname = Worksheets("Sheet1").Range("B" & I).Value
+        text_body = Worksheets("Sheet1").Range("C" & I).Value
+        to_message = Worksheets("Sheet1").Range("F6").Value
+        cc_message = Worksheets("Sheet1").Range("F7").Value
+        subject_message = Worksheets("Sheet1").Range("F8").Value
+        
+        Dim olApp As Outlook.Application
+        Dim olEmail As Outlook.MailItem
+        
+        Set olApp = New Outlook.Application
+        Set olEmail = olApp.CreateItem(olMailItem)
+        
+        With olEmail
+            .BodyFormat = olFormatPlain
+            .Display
+            .body = text_body & vbCrLf & vbCrLf & .body
+            .Attachments.Add Environ("UserProfile") & "\Desktop\raw\Diplomas\" & name_surname & ".docx"
+            
+            .To = to_message & name_surname & ".docx"
+            .CC = cc_message
+            .Subject = subject_message
+            
+            '.Send
+    
+        End With
+        
+     Next I
+        
+    
+    
+    
+    
+End Sub
+
+
+Sub RunPythonScript()
+Dim objShell As Object
+Dim ScriptPath As String
+    Set objShell = VBA.CreateObject("Wscript.Shell")
+    ScriptPath = """C:\Users\Piotr\Desktop\raw\bat_start.bat"""
+    
+    objShell.Run ScriptPath
+
+    
+End Sub
+
