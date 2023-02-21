@@ -1,0 +1,9 @@
+python.exe -m pip install --upgrade pip
+python -m venv venv
+venv\Scripts\activate.bat
+##where python >> to path where is python 
+pip install -r requirements.txt 
+
+
+https://www.youtube.com/watch?v=APOPm01BVrk
+information from ^^
